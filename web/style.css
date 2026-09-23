@@ -1,0 +1,57 @@
+/*******************************************************************************
+ *
+ * Nom : style.css
+ * Date et auteur : Nathan Charnomordic
+ *		Créé le 23/10/2026
+ *
+ * Description :
+ *		Fichier CSS du TP apprentissage des bases du css
+ *
+ *******************************************************************************/
+ 
+ * {
+ box-sizing: border-box;
+}
+
+ body {
+ font-family:Arial, Helvetica, sans-serif;
+ line-height: 1.5em;
+}
+
+ header {
+ background-color: DimGray;
+ color: white;
+ text-align: center;
+ font-size: 2em;
+ line-height: 1.2em;
+ margin: 10px;
+ padding: 10px;
+}
+
+ footer {
+ background-color: DimGray;
+ color: white;
+ text-align: center;
+ padding: 5px;
+ margin: 10px;
+}
+
+ section {
+ margin: 10px;
+}
+
+ article {
+ margin: 10px;
+ padding: 10px;
+}
+
+ p {
+ margin: 10px;
+}
+
+h1 {
+ text-align: center;
+ color: red;
+ font-size: 2em;
+ 
+}
