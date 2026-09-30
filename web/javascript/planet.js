@@ -5,7 +5,7 @@ function writeText(txt) {
 }
 
 function writeDefault() {
-	writeText("Mouse over the sun and the planets and see the different descriptions.");
+	writeText("MOUSE over the sun and the planets and see the different descriptions.");
 }
 
 function affichePlanete(nombre) {
