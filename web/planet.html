@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="javascript/planet.js"></script>
+	<link rel="stylesheet" href="tphtml.css">
+</head>
+
+<body>
+<h1>Javascript Events</h1>
+<img src ="images/planets.gif" width ="145" height ="126" alt="Planets" usemap="#planetmap" />
+<img id="affichage_zoom" src="" alt="" >
+
+<map name="planetmap">
+<area shape ="rect" coords ="0,0,82,126"
+onmouseover="writeText('The Sun and the gas giant planets like Jupiter are by far the largest objects in our Solar System.');affichePlanete(1);"
+onmouseout="writeDefault();affichePlanete(-1)"
+target ="_blank" alt="Sun" />
+
+<area shape ="circle" coords ="90,58,3"
+onmouseover="writeText('The planet Mercury is very difficult to study from the Earth because it is always so close to the Sun.');affichePlanete(2);"
+onmouseout="writeDefault();affichePlanete(-1)"
+target ="_blank" alt="Mercury" />
+
+<area shape ="circle" coords ="124,58,8"
+onmouseover="writeText('Until the 1960s, Venus was often considered a twin sister to the Earth because Venus is the nearest planet to us, and because the two planets seem to share many characteristics.');affichePlanete(3);"
+onmouseout="writeDefault();affichePlanete(-1)"
+target ="_blank" alt="Venus" />
+</map> 
+
+<p id="desc">Mouse over the sun and the planets and see the different descriptions.</p>
+
+</body>
+</html>
