@@ -62,8 +62,23 @@ function Fibonacci(n)
 //		- appelle la fonction Range()
 function Appeler_Range()
 {
-	// A FAIRE
+	const start = document.forms["range"]["start"].value;
+	const stop = Number(document.forms["range"]["stop"].value);
+	const step = document.forms["range"]["step"].value;
+	let start_2
+	let step_2
+	if (step == "")
+		step_2 = undefined;
+	else 
+		step_2 = Number(step);
+	if (start == "")
+		start_2 = undefined;
+	else
+		start_2 = Number(start);
 	
+	let range = Range(stop, start_2, step_2);
+	
+	let resultat = document.getElementById("resultat_range").innerHTML = range;
 }
 
 
@@ -72,6 +87,15 @@ function Appeler_Range()
 // stop (exclu) avec un pas de step.
 function Range(stop, start=0, step=1)
 {
-	// A FAIRE
-
+	let result = [];
+	if (stop <= start) {
+			return result;
+	}
+	if (step <= 0) { //pas strictement positif
+			return undefined;
+	}
+	for (let i = start; i<stop; i += step) {
+		result.push(i);
+	}
+	return result;
 }
