@@ -78,7 +78,7 @@ function Appeler_Range()
 	
 	let range = Range(stop, start_2, step_2);
 	
-	let resultat = document.getElementById("resultat_range").innerHTML = range;
+	let resultat = document.getElementById("resultat_range").innerHTML = "Range = [" + range + "]";
 }
 
 
