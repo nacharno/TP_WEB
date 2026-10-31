@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script defer src="https://unpkg.com/alpinejs@3.17.5/dist/cdn.min.js"></script>
+	<link rel="stylesheet" href="todo.css">
+</head>
+
+<body>
+<div x-data="{darkMode: localStorage.getItem('theme') ==='dark', dyslexie: localStorage.getItem('lecture')==='dyslexie'}">
+	<script>
+	function getCookie(nom) {
+		let cookie = document.cookie;
+		cookie.split('; ');
+		for (let egalite : cookie) {
+				egalite.split('=');
+				if (egalite[0] === nom) return egalite[1];
+		}
+		return None;
+	}
+	</script>
+	<div :class="{dark: darkMode, dyslexie: dyslexie}">
+	<h1>To-do list</h1>
+	<ul id="liste_taches" x-data="taches= JSON.parse(localStorage.getItem('taches')) || [];">
+		 <template x-for="tache in taches">
+			<li x-text="tache" @click="taches.pop(tache)"></li>
+		</template>
+	</ul>
+	<input type="textarea" id="nouvelleTache" />
+	<button @click="taches.push(document.getElementById('nouvelleTache')['value']); localStorage.setItem('taches',JSON.stringify(taches));">Ajouter tâche</button><br/>
+	<button @click="darkMode = !darkMode; if (darkMode) {localStorage.setItem('theme', 'dark');} else {localStorage.setItem('theme', 'light');}" >Changer de thème</button>
+	<button @click="dyslexie = !dyslexie; if (dyslexie) {localStorage.setItem('lecture', 'dyslexie');} else {localStorage.setItem('lecture', 'non');}">Lecture facilitée</button>
+	</div>
+</div>
+</body>
+</html>
