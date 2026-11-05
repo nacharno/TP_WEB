@@ -12,24 +12,34 @@
 	function getCookie(nom) {
 		let cookie = document.cookie;
 		cookie.split('; ');
-		for (let egalite : cookie) {
+		for (let egalite : cookie;) {
 				egalite.split('=');
 				if (egalite[0] === nom) return egalite[1];
 		}
 		return None;
 	}
 	</script>
-	<div :class="{dark: darkMode, dyslexie: dyslexie}">
+	<div :class="{dark: darkMode, dyslexie: dyslexie}" x-data="{taches : JSON.parse(localStorage.getItem('taches')) || [], validees : 0}">
 	<h1>To-do list</h1>
-	<ul id="liste_taches" x-data="taches= JSON.parse(localStorage.getItem('taches')) || [];">
-		 <template x-for="tache in taches">
-			<li x-text="tache" @click="taches.pop(tache)"></li>
+	<ul id="liste_taches">
+		 <template x-for="(tache, index) in taches">
+			<div>
+				<li x-text="tache.slice(1)" x-init="if (tache.charAt(0) === 'V') {validees++;}"></li>
+				<span x-show="tache.charAt(0) === 'V'">
+				Validée
+				</span>
+				<button @click="taches=taches.slice(0, index).concat(taches.slice(index+1));localStorage.setItem('taches',JSON.stringify(taches));">Supprimer</button>
+				<span x-show="tache.charAt(0) === 'X'">
+				<button @click="taches[index] = 'V'.concat(tache.slice(1));localStorage.setItem('taches',JSON.stringify(taches));">Valider</button>
+				</span>
+			</div>
 		</template>
 	</ul>
 	<input type="textarea" id="nouvelleTache" />
-	<button @click="taches.push(document.getElementById('nouvelleTache')['value']); localStorage.setItem('taches',JSON.stringify(taches));">Ajouter tâche</button><br/>
+	<button @click="taches.push('X' + document.getElementById('nouvelleTache')['value']); localStorage.setItem('taches',JSON.stringify(taches));">Ajouter tâche</button><br/>
 	<button @click="darkMode = !darkMode; if (darkMode) {localStorage.setItem('theme', 'dark');} else {localStorage.setItem('theme', 'light');}" >Changer de thème</button>
 	<button @click="dyslexie = !dyslexie; if (dyslexie) {localStorage.setItem('lecture', 'dyslexie');} else {localStorage.setItem('lecture', 'non');}">Lecture facilitée</button>
+	<div x-text="validees+' taches sur '+taches.length +' validées'"></div>
 	</div>
 </div>
 </body>
